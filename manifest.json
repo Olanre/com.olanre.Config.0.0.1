@@ -1,0 +1,14 @@
+{
+	"version": "1.0",
+	 "name": "Configuration Export",
+	   "description": "Application to export QRadar content types",
+	    "uuid": "5991005e-d9b6-4709-96b4-015edc96ef35", 
+	    "log_level": "INFO", 
+	    "areas": [{
+	    	"url": " ", 
+	    	"text": "CME",
+	     	"required_capabilities": ["ADMIN"],
+	      	"id": "CME",
+	       	"description": "A QRadar export app"
+	       }]
+}
