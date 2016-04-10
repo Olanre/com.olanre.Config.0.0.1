@@ -11,7 +11,6 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
 	        	   var self = this;
 	        	   for(var i = 0; i < self.apps.length; i ++){
 	        		   var item = self.apps[i];
-         
     					item.id = item['application_state']['id'];
     					item.status = item['application_state']['status'];
     					item.error_message = item['application_state']['error_message'];
@@ -25,7 +24,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
     							
             			self.apps[i] = item;
             			
-            			console.log("In the loop for idex :" + i + " \n" + item);
+            			console.log("In the loop for idex :" + i + " \n" + JSON.stringify(item));
 	        	   }
 	            },
 					           

@@ -129,7 +129,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 	            },
 	            
 	            getCategories: function(){
-	            	var self;
+	            	var self = this;
 	            	var d = new Deferred(function(reason){
 	  				      debugger
 	  				      console.log("Cancelled deferred with the reason" + reason)
@@ -151,7 +151,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 	  				      debugger
 	  				      console.log("Cancelled deferred with the reason" + reason)
 		            });
-	            	self.sensorAPI.query({}).then(function(sensor_devices){
+	            	self.sensorsAPI.query({}).then(function(sensor_devices){
     	        		self.sensors = sensor_devices;
     	        		console.log("Done getting sensor devices");
 	                	d.resolve();

@@ -20,12 +20,15 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
 	        		   (function(item, i){
 	            			var name = '/' + item.name;	
 	        				self.referenceAPI.query(name).then(function(data){
+	        					//console.log(data);
 	            				item = data;
 	            				item.creation_time= factory.timeConverter(item.creation_time);
-	            				for(var j= 0; j < item.data.length; j++){
-	                				item.data[j].last_seen = factory.timeConverter(item.data[j].last_seen);
-	                				item.data[j].first_seen = factory.imeConverter(item.data[j].element.first_seen);
-	                			}
+	            				 if(item.number_of_elements > 0){
+		            				for(var j= 0; j < item.data.length; j++){
+		                				item.data[j].last_seen = factory.timeConverter(item.data[j].last_seen);
+		                				item.data[j].first_seen = factory.timeConverter(item.data[j].first_seen);
+		                			}
+	            				}
 		            			self.ref_sets[i] = item;
 		            			
 		            			if((self.ref_sets.length - 1) == i) return deferred.resolve(self.ref_sets);          				

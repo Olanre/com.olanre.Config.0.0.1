@@ -16,7 +16,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
 	           parse_hosts: function(){
 	        	   var self = this;
 	        	   for(var i =0; i< self.hosts.length; i++){          			
-	        		   var item = hosts[i];
+	        		   var item = self.hosts[i];
 	        			   
     					item.maxPortValue = item.properties.maxPortValue;
     					item.minPortValue = item.properties.minPortValue;
@@ -29,7 +29,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
     					}
     					item.components = item.components.toString();
     					
-    					var primary_host = item.server_hosts.filter(function(server_host){
+    					var primary_host = item.servers_hosts.filter(function(server_host){
 	            			return item.primary_host_id == server_host.id;
 	            		});
         				if( primary_host !== null  &&  primary_host.length > 0){
@@ -39,7 +39,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
         					item.primary_host = "";
         				}
     		   
-		    		   var secondary_host = item.server_hosts.filter(function(server_host){
+		    		   var secondary_host = item.servers_hosts.filter(function(server_host){
 		        			return item.secondary_host_id == server_host.id;
 		        		});
 						if(secondary_host !== null  &&  secondary_host.length > 0){

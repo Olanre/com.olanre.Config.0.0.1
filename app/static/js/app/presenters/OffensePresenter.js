@@ -40,25 +40,28 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
 	        	
 	        	parseResults: function(){
 	        		var self = this;
-	            	for(var i =0; i< self.offenses.length  ; i++){
+	            	for(var i =0; i < self.offenses.length; i++){
 	            		var item = self.offenses[i];            	         			
-        				var sources = offense.source_address_ids;
-        				var filtered = self.source_ips.filter(function(item){
-	            			return sources.indexOf(item.id) > -1;
-	            		});
-        				self.offense.source_addresses = filtered;
+        				var sources = item.source_address_ids;
+        				for(var j =0; j < sources.length; j++){
+        					item.source_address_ids = self.sourceAPI.get(sources[j]).source_ip;
+        				}
+        				item.source_addresses = item.source_address_ids.toString();
+        				delete item.source_address_ids;
         				
-        				var destinations = offense.local_destination_address_ids;
-        				filtered = self.dest_ips.filter(function(item){
-	            			return destinations.indexOf(item.id) > -1;
-	            		});
-        				self.local_destination_addresses = filtered;
         				
+        				var destinations =item.local_destination_address_ids;
+        				for(var j =0; j < destinations.length; j++){
+        					item.local_destination_address_ids = self.destAPI.get(destinations[j]).local_destination_ip;
+        				}
+        				item.local_destination_addresses = item.local_destination_address_ids.toString();
+        				delete item.local_destination_address_ids;
+
         				item.item.last_updated = factory.timeConverter(item.last_updated);
             			item.start_time= factory.timeConverter(item.start_time);
             			item.categories = item.categories.toString();
             			item.destination_networks = item.destination_networks.toString();
-            			item.offense_type = offense_type[item.offense_type];
+            			item.offense_type = self.offense_type[item.offense_type];
             			self.offenses[i] = item;
 	            	}
 	            },
@@ -70,7 +73,7 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
   				      console.log("Cancelled deferred with the reason" + reason)
 	            	});
 	        	   self.offenseAPI.query({}).then(function(offenses){
-	        		   self.offense = offenses;
+	        		   self.offenses = offenses;
 	                	console.log("Done getting offense list");
 	                	d.resolve();
 	                }, function(err){
