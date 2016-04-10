@@ -75,10 +75,10 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
 	                	d.resolve();
 	                }, function(err){
         			    // Do something when the request errors out
-        				deferred.cancel(err);
+        				d.cancel(err);
         				debugger
         			});
-	                return deferred.promise;
+	                return d.promise;
 	           },
 	           
 	           getOffense_Sources: function(){
@@ -87,16 +87,16 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
   				      debugger
   				      console.log("Cancelled deferred with the reason" + reason)
 	            	});
-	        	   self.sourceAPI.query({fields: 'source_ip, i'}).then(function(source_ips){
+	        	   self.sourceAPI.query({fields: 'source_ip, id'}).then(function(source_ips){
                			self.source_ips = source_ips;
 	                	console.log("Done getting offense source addresses");
 	                	d.resolve();
 	                }, function(err){
         			    // Do something when the request errors out
-        				deferred.cancel(err);
+        				d.cancel(err);
         				debugger
         			});
-	                return deferred.promise;
+	                return d.promise;
 	           },
 	           
 	           getOffense_Destinations: function(){
@@ -111,10 +111,10 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
 	                	d.resolve();
 	                }, function(err){
         			    // Do something when the request errors out
-        				deferred.cancel(err);
+        				d.cancel(err);
         				debugger
         			});
-	                return deferred.promise;
+	                return d.promise;
 	           },
 	        
 	            getALL: function () {

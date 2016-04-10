@@ -1,7 +1,7 @@
 ﻿define([
         "dojo/dom", "./views/ConfigListView", "./views/LogSourceView", "./views/UserView",
         "./views/AppView", "./views/NetworkView", "./views/OffenseView", "./views/ReferenceView",
-        "./views/ServerView","./views/RegexView" ,"./router", "../Util/Util", "dojo/domReady!"],
+        "./views/ServerView","./views/RegexView" ,"./router", "./Util/Util", "dojo/domReady!"],
     function (dom, ConfigListView, LogSourceView, UserView, AppView, NetworkView,
     		OffenseView, ReferenceSetView, HostView, CustomPropertyView, router, util) {
         var parentNode = dom.byId("viewContainer");
@@ -48,7 +48,7 @@
         	for(key in views){
         		if(views.hasOwnProperty(key)){
         			var View = new views[key](null, createAndAppendDiv(parentNode));
-        			router.register(key, views[key]);
+        			router.registerView(key, views[key]);
         		}
         	}
         }

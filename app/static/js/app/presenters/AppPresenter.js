@@ -18,7 +18,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
     					item.docker_port = item['manifest']['docker_port'];
     					item.description = item['manifest']['description'];
     					item.name = item['manifest']['name'];
-    					item.capabilities = item['manifest']['areas']['required_capabilities'].join(" ");
+    					item.capabilities = item['manifest']['areas'][0]['required_capabilities'].join(" ");
 
     					delete item.application_state;
     					delete item.manifest;

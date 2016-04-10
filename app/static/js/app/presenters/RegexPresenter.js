@@ -108,7 +108,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 	        			// Do something when the request errors out
 	        			d.cancel(err);
 	        		});
-	            	return deferred.promise;
+	            	return d.promise;
 	            },
 	            
 	            getQids: function(){
@@ -125,7 +125,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 	        			// Do something when the request errors out
 	        			d.cancel(err);
 	        		});
-	            	return deferred.promise;
+	            	return d.promise;
 	            },
 	            
 	            getCategories: function(){
@@ -142,7 +142,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         			    // Do something when the request errors out
         				d.cancel(err);
         			});
-	            	return deferred.promise;
+	            	return d.promise;
 	            },
 	            
 	            getLogsources: function(){
@@ -159,7 +159,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         			    // Do something when the request errors out
         				d.cancel(err);
         			});
-	            	return deferred.promise;
+	            	return d.promise;
 	            },
 	            
 	            getTypes: function(){
@@ -176,7 +176,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         			    // Do something when the request errors out
         				d.cancel(err);
         			});
-	            	return deferred.promise;
+	            	return d.promise;
 	            },
 					           
 	            getRegex: function () {
@@ -195,7 +195,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         				deferred.cancel(err);
         				debugger
         			});
-	                return deferred.promise;
+	                return d.promise;
 	            },
 	            
 	            getAll: function(){
