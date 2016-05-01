@@ -27,13 +27,13 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 		            this.qidAPI = new model("qid_records").apiStore;
 		            this.categoryAPI = new model("low_level_category").apiStore;
 		            this.sensorsAPI = new model('log_sources').apiStore;
-		            this.typesAPI = new model('log_source_groups').apiStore;
+		            this.typesAPI = new model('log_source_types').apiStore;
 	            },
 	           
 	           parseResults: function(){
 	        	   var self = this;
-	        	   for (var i =0 ; i< self.property_expression.length; i++ ){            			
-	        		   var property = self.property_expression[i];
+	        	   for (var i =0 ; i< self.property_express.length; i++ ){            			
+	        		   var property = self.property_express[i];
 	            				
         				var regex = self.regex_property.filter(function(item){
 	            			return item.id == property.regex_property_id;
@@ -55,15 +55,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         					property.low_level_category = "";
         				}
         				
-        				var qidmap = self.qid.filter(function(item){
-	            			return item.id == property.qid;
-	            		});
-        				if(qidmap !== null  && qidmap.length > 0){
-        					property.qid = qidmap[0].name ;
-        					
-        				}else{
-        					property.qid = "";
-        				}
+        				
         				
         				var logsources = self.sensors.filter(function(item){
 	            			return item.id == property.log_source_id;
@@ -76,10 +68,8 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         					property.logsource_name = "";
         				}
         				
-        				var types = self.types.filter(function(item){
-	            			return item.id == property.log_source_type_id;
-	            		});
-        				if(types !== null  && types.length > 0){
+        				var types = self.typesAPI.get(property.log_source_type_id).name;
+        				if(types !== null){
         					property.logsource_type = types[0].name ;
         					delete property.log_source_type_id;
         					
@@ -87,8 +77,15 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
         					property.logsource_types;
         				}
         				
-        				property.created= factory.timeConverter(item.created);
-        				property.modified= factory.timeConverter(item.modified);
+        				if(property.qid !== null ){
+        					var qidmap = self.qidAPI.get(property.qid).name;
+        					property.qid = qidmap ;
+        					
+        				}else{
+        					property.qid = "";
+        				}
+        				property.created= factory.timeConverter(property.created);
+        				property.modified= factory.timeConverter(property.modified);
             			
             			self.property_express[i] = property;
 	        	   }
@@ -101,7 +98,7 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 	  				      console.log("Cancelled deferred with the reason" + reason)
 		            	});
 	            	self.propertyAPI.query({}).then(function(properties){
-	                	self.property_expression = properties;
+	                	self.property_express = properties;
 	                	console.log("Done getting regex property expressions");
 	                	d.resolve();
 	            	},function(err){
@@ -204,8 +201,9 @@ define(["dojo/promise/all","dojo/_base/declare", "../models/apiModel", "dojo/Def
 	  				      debugger
 	  				      console.log("Cancelled deferred with the reason" + reason)
 		            });
-	            	all([self.getProperties(), self.getQids(), self.getCategories(), self.getLogsources(), self.getRegex() ]).then(function(){
+	            	all([self.getProperties(), self.getTypes(), self.getCategories(), self.getLogsources(), self.getRegex()]).then(function(){
 	            			self.parseResults();
+	            			
 	            			d.resolve(self.property_express);
 	            	 }, function(err){
 	        			    // Do something when the request errors out

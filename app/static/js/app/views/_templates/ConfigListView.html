@@ -2,13 +2,30 @@
 <div class="container">
   <h2>Configuration Items to Export</h2>
   <ul class="list-group">
-    <li data-dojo-attach-event="onclick: goToSensors" class="list-group-item">Log Sources</li>
-    <li data-dojo-attach-event="onclick: goToUsers" class="list-group-item">Users</li>
-    <li data-dojo-attach-event="onclick: goToOffenses" class="list-group-item">Offenses</li>
-    <li data-dojo-attach-event="onclick: goToReferenceSets" class="list-group-item">Reference Sets</li>
-    <li data-dojo-attach-event="onclick: goToCEP" class="list-group-item">Custom Event Properties</li>
-    <li data-dojo-attach-event="onclick: goToNetworks" class="list-group-item">Network Hierarchy</li>
-    <li data-dojo-attach-event="onclick: goToHosts" class="list-group-item">Server Hosts</li>
-    <li data-dojo-attach-event="onclick: goToApps" class="list-group-item">QRadar Apps & Extensions</li>
+    <li data-dojo-attach-event="makeWidget('/Logsources')" class="list-group-item">Log Sources</li>
+    <li data-dojo-attach-event="makeWidget('/Users')" class="list-group-item">Users</li>
+    <li data-dojo-attach-event="makeWidget('/Offenses')" class="list-group-item">Offenses</li>
+    <li data-dojo-attach-event="makeWidget('/ReferenceSets')"class="list-group-item">Reference Sets</li>
+    <li data-dojo-attach-event="makeWidget('/CustomProperties')" class="list-group-item">Custom Event Properties</li>
+    <li data-dojo-attach-event="makeWidget('/Networks')" class="list-group-item">Network Hierarchy</li>
+    <li data-dojo-attach-event="makeWidget('/Hosts')" class="list-group-item">Server Hosts</li>
+    <li data-dojo-attach-event="makeWidget('/Apps')" class="list-group-item">QRadar Apps & Extensions</li>
   </ul>
+  <div id = 'exportModal' class="modal fade" tabindex="-1" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Modal title</h4>
+	      </div>
+	      <div class="modal-body"  data-dojo-attach-point="bodyNode">
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Export</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </div>

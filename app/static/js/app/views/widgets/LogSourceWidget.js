@@ -12,11 +12,13 @@
                 templateString: template,
 
                 store: null,
-
+                
+                constructor: function(){
+                	this.store = new LogSourcePresenter();
+                }
 
                 postCreate: function() {
                 	var self = this;
-                    this.store = new LogSourcePresenter();
                     this.store.getAll().then(function(result){
                     	self.sensors.innerHTML =  JSON.stringify(result.sensors);
                     	self.types.innerHTML = JSON.stringify(result.types);

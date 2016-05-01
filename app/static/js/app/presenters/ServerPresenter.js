@@ -34,7 +34,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
 	            		});
         				if( primary_host !== null  &&  primary_host.length > 0){
         					item.primary_host = primary_host[0];
-        					delete property.primary_host_id;
+        					delete item.primary_host_id;
         				}else{
         					item.primary_host = "";
         				}
@@ -44,7 +44,7 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
 		        		});
 						if(secondary_host !== null  &&  secondary_host.length > 0){
 							item.secondary_host = secondary_host[0];
-							delete property.secondary_host_id;
+							delete item.secondary_host_id;
 						}else{
 							item.secondary_host = "";
 						}

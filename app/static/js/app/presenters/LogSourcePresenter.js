@@ -162,6 +162,11 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
         			});
 	            	return d.promise;
 	            },
+	            
+	            getKeys: function(){
+	            	return this.sensors
+	            }
+	            
 	        
 	            getAll: function(){
 	            	var self = this;

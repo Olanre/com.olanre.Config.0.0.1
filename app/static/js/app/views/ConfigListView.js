@@ -1,6 +1,10 @@
 ﻿define(["dojo/_base/declare", "dijit/_WidgetBase", "dijit/_TemplatedMixin",
+        "./widgets/LogSourceWidget", "./widgets/UserWidget",
+        "./widgets/AppWidget", "./widgets/NetworkWidget", "./widgets/OffenseWidget", 
+        "./widgets/ReferenceWidget", "./widgets/ServerWidget","./widgets/RegexWidget" ,
     "dojo/router", "dojo/text!./_templates/ConfigListView.html"],
-    function (declare, _WidgetBase, _TemplatedMixin, router, template) {
+    function (declare, _WidgetBase, _TemplatedMixin,  LogSourceView, UserView, AppView, NetworkView,
+    		OffenseView, ReferenceSetView, HostView, CustomPropertyView, router, template) {
 
         var ConfigListView = declare([_WidgetBase, _TemplatedMixin], {
             templateString: template,
@@ -10,46 +14,31 @@
                 
             },
             
-            goToSensors: function(){
-            	console.log("Redirect to sensor devices here");
-            	router.go("/Logsources");
+            widgets: [],
+            widgetView: null,
+            
+            constructor : function(){
+            	
+            	this.widgets =  {
+            		'/Logsources' : LogSourceView,
+            		'/Users': UserView,
+            		'/Apps': AppView,
+            		'/Networks': NetworkView,
+            		'/Offenses': OffenseView,
+            		'/ReferenceSets': ReferenceSetView,
+            		'/CustomProperties': CustomPropertyView,
+            		'/Hosts': HostView,
+                };
             },
             
-            goToUsers: function(){
-            	console.log("Redirect to users here");
-            	router.go("/Users");
+            makeWidget: function(wig){
+        		if(this.widgets.hasOwnProperty(wig) ){
+        			var Widget = new widgets[key]({});
+        			this.widgetView = Widget;
+        			this.WidgetView.placeAt(this.bodyNode);
+        			dom.byId("exportModal").modal('show')
+        		}
             },
-            
-            goToOffenses: function(){
-            	console.log("Redirect to offenses here");
-            	router.go("/Offenses");
-            },
-            
-            goToReferenceSets: function(){
-            	console.log("Redirect to reference sets here");
-            	router.go("/ReferenceSets");
-            },
-            
-            goToCEP: function(){
-            	console.log("Redirect to custom event properties here");
-            	router.go("/CustomProperties");
-            },
-            
-            goToNetworks: function(){
-            	console.log("Redirect to networks here");
-            	router.go("/Networks");
-            },
-            
-            goToHosts: function(){
-            	console.log("Redirect to server hosts here");
-            	router.go("/Hosts");
-            },
-            
-            goToApps: function(){
-            	console.log("Redirect to application extensions here");
-            	router.go("/Apps");
-            },
-            
             
         });
 

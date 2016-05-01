@@ -1,7 +1,6 @@
 define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Evented", "../Util/Util" ],
 		function (declare, model, Deferred, Evented, util) {
 	        var AppPresenter = declare([], {
-	            apps: null,
 	        	appAPI : null,
 	        	constructor: function(){
 	        		this.apps =  [];   	
@@ -11,20 +10,18 @@ define(["dojo/_base/declare", "../models/apiModel", "dojo/Deferred",  "dojo/Even
 	        	   var self = this;
 	        	   for(var i = 0; i < self.apps.length; i ++){
 	        		   var item = self.apps[i];
-    					item.id = item['application_state']['id'];
+    					item.id = item['application_state']['application_id'];
     					item.status = item['application_state']['status'];
     					item.error_message = item['application_state']['error_message'];
     					item.docker_port = item['manifest']['docker_port'];
     					item.description = item['manifest']['description'];
     					item.name = item['manifest']['name'];
-    					item.capabilities = item['manifest']['areas'][0]['required_capabilities'].join(" ");
+    					if( item['manifest']['areas'] !== undefined) item.capabilities = item['manifest']['areas'][0]['required_capabilities'].join(" ");
 
     					delete item.application_state;
     					delete item.manifest;
     							
             			self.apps[i] = item;
-            			
-            			console.log("In the loop for idex :" + i + " \n" + JSON.stringify(item));
 	        	   }
 	            },
 					           

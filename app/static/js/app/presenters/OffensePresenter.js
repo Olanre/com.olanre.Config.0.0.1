@@ -57,7 +57,7 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
         				item.local_destination_addresses = item.local_destination_address_ids.toString();
         				delete item.local_destination_address_ids;
 
-        				item.item.last_updated = factory.timeConverter(item.last_updated);
+        				item.last_updated = factory.timeConverter(item.last_updated);
             			item.start_time= factory.timeConverter(item.start_time);
             			item.categories = item.categories.toString();
             			item.destination_networks = item.destination_networks.toString();
