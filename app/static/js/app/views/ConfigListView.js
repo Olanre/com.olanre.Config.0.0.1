@@ -3,31 +3,27 @@
         "./widgets/AppWidget", "./widgets/NetworkWidget", "./widgets/OffenseWidget", 
         "./widgets/ReferenceWidget", "./widgets/ServerWidget","./widgets/RegexWidget" ,
     "dojo/router", "dojo/text!./_templates/ConfigListView.html"],
-    function (declare, _WidgetBase, _TemplatedMixin,  LogSourceView, UserView, AppView, NetworkView,
-    		OffenseView, ReferenceSetView, HostView, CustomPropertyView, router, template) {
+    function (declare, _WidgetBase, _TemplatedMixin,  LogSourceWidget, UserWidget, AppWidget, NetworkWidget,
+    		OffenseWidget, ReferenceSetWidget, HostWidget, CustomPropertyWidget, router, template) {
 
         var ConfigListView = declare([_WidgetBase, _TemplatedMixin], {
             templateString: template,
 
-            postCreate: function () {
-                var self = this;
-                
-            },
             
             widgets: [],
             widgetView: null,
             
-            constructor : function(){
+            postCreate : function(){
             	
             	this.widgets =  {
-            		'/Logsources' : LogSourceView,
-            		'/Users': UserView,
-            		'/Apps': AppView,
-            		'/Networks': NetworkView,
-            		'/Offenses': OffenseView,
-            		'/ReferenceSets': ReferenceSetView,
-            		'/CustomProperties': CustomPropertyView,
-            		'/Hosts': HostView,
+            		'/Logsources' : LogSourceWidget,
+            		'/Users': UserWidget,
+            		'/Apps': AppWidget,
+            		'/Networks': NetworkWidget,
+            		'/Offenses': OffenseWidget,
+            		'/ReferenceSets': ReferenceSetWidget,
+            		'/CustomProperties': CustomPropertyWidget,
+            		'/Hosts': HostWidget,
                 };
             },
             
@@ -39,6 +35,7 @@
         			dom.byId("exportModal").modal('show')
         		}
             },
+
             
         });
 

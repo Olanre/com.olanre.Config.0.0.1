@@ -2,14 +2,14 @@
 <div class="container">
   <h2>Configuration Items to Export</h2>
   <ul class="list-group">
-    <li data-dojo-attach-event="makeWidget('/Logsources')" class="list-group-item">Log Sources</li>
-    <li data-dojo-attach-event="makeWidget('/Users')" class="list-group-item">Users</li>
-    <li data-dojo-attach-event="makeWidget('/Offenses')" class="list-group-item">Offenses</li>
-    <li data-dojo-attach-event="makeWidget('/ReferenceSets')"class="list-group-item">Reference Sets</li>
-    <li data-dojo-attach-event="makeWidget('/CustomProperties')" class="list-group-item">Custom Event Properties</li>
-    <li data-dojo-attach-event="makeWidget('/Networks')" class="list-group-item">Network Hierarchy</li>
-    <li data-dojo-attach-event="makeWidget('/Hosts')" class="list-group-item">Server Hosts</li>
-    <li data-dojo-attach-event="makeWidget('/Apps')" class="list-group-item">QRadar Apps & Extensions</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/Logsources')" class="list-group-item">Log Sources</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/Users')" class="list-group-item">Users</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/Offenses')" class="list-group-item">Offenses</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/ReferenceSets')"class="list-group-item">Reference Sets</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/CustomProperties')" class="list-group-item">Custom Event Properties</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/Networks')" class="list-group-item">Network Hierarchy</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/Hosts')" class="list-group-item">Server Hosts</li>
+    <li data-dojo-attach-event="onClick:makeWidget('/Apps')" class="list-group-item">QRadar Apps & Extensions</li>
   </ul>
   <div id = 'exportModal' class="modal fade" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">

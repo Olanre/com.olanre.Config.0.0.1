@@ -165,7 +165,7 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
 	            
 	            getKeys: function(){
 	            	return this.sensors
-	            }
+	            },
 	            
 	        
 	            getAll: function(){

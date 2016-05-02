@@ -15,7 +15,7 @@
                 
                 constructor: function(){
                 	this.store = new LogSourcePresenter();
-                }
+                },
 
                 postCreate: function() {
                 	var self = this;
