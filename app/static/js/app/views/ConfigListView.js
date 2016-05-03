@@ -8,12 +8,11 @@
 
         var ConfigListView = declare([_WidgetBase, _TemplatedMixin], {
             templateString: template,
-
-            
+ 
             widgets: [],
             widgetView: null,
             
-            postCreate : function(){
+            constructor : function(){
             	
             	this.widgets =  {
             		'/Logsources' : LogSourceWidget,
@@ -27,6 +26,11 @@
                 };
             },
             
+            postCreate: function (){
+                var self = this;
+                
+            },
+            
             makeWidget: function(wig){
         		if(this.widgets.hasOwnProperty(wig) ){
         			var Widget = new widgets[key]({});
@@ -35,7 +39,7 @@
         			dom.byId("exportModal").modal('show')
         		}
             },
-
+            
             
         });
 
