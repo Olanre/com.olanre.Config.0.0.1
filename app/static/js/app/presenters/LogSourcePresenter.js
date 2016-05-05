@@ -164,7 +164,7 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
 	            },
 	            
 	            getKeys: function(){
-	            	return this.sensors
+	            	
 	            },
 	            
 	        
@@ -178,7 +178,9 @@ define(["dojo/promise/all", "dojo/_base/declare", "../models/apiModel", "dojo/De
 	            		
 	            		self.parse_sources().then(function(){
 		            		all([self.parse_types(), self.parse_groups()]).then(function(){
-		            			var result = { 'sensors': self.sensors, 'types': self.types, 'groups': self.groups };
+		            			var keys = [];
+		    	            	for(var k in self.sensors) keys.push(k);
+		            			var result = { 'sensors': self.sensors, 'types': self.types, 'groups': self.groups, 'keys': keys };
 			            		 d.resolve(result);
 		            		}, function(err){
 		        			    // Do something when the request errors out

@@ -2,14 +2,14 @@
 <div class="container">
   <h2>Configuration Items to Export</h2>
   <ul class="list-group">
-    <li data-dojo-attach-event="onClick:makeWidget('/Logsources')" class="list-group-item">Log Sources</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/Users')" class="list-group-item">Users</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/Offenses')" class="list-group-item">Offenses</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/ReferenceSets')"class="list-group-item">Reference Sets</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/CustomProperties')" class="list-group-item">Custom Event Properties</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/Networks')" class="list-group-item">Network Hierarchy</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/Hosts')" class="list-group-item">Server Hosts</li>
-    <li data-dojo-attach-event="onClick:makeWidget('/Apps')" class="list-group-item">QRadar Apps & Extensions</li>
+    <li data-dojo-attach-event="onClick:makeLogSourceWidget"  class="list-group-item">Log Sources</li>
+    <li data-dojo-attach-event="onClick:makeUserWidget"  class="list-group-item">Users</li>
+    <li data-dojo-attach-event="onClick:makeOffenseWidget" data-dojo-args="Offenses" class="list-group-item">Offenses</li>
+    <li data-dojo-attach-event="onClick:makeReferenceSetWidget" data-dojo-args="ReferenceSets" class="list-group-item">Reference Sets</li>
+    <li data-dojo-attach-event="onClick:makeCustomPropertyWidget" data-dojo-args="CustomProperties" class="list-group-item">Custom Event Properties</li>
+    <li data-dojo-attach-event="onClick:makeNetworkWidget"  data-dojo-args="Networks" class="list-group-item">Network Hierarchy</li>
+    <li data-dojo-attach-event="onClick:makeHostWidget" data-dojo-args="Hosts"  class="list-group-item">Server Hosts</li>
+    <li data-dojo-attach-event="onClick:makeAppWidget" data-dojo-args="Apps" class="list-group-item">QRadar Apps & Extensions</li>
   </ul>
   <div id = 'exportModal' class="modal fade" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
