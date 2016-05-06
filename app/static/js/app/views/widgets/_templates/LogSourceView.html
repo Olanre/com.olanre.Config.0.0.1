@@ -1,5 +1,7 @@
 <div class = "container">
-	<button type="button" class="btn btn-default"  data-dojo-attach-event="onclick: goToConfigList">Back</button>
+	{{#keys}}
+   		 <input value = '{{index}}' type="checkbox" />
+	{{/keys}}
 	<div class="sensors view" data-dojo-attach-point="sensors">
 	    
 	</div>

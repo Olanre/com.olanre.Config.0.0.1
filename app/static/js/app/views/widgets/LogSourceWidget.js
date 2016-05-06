@@ -19,10 +19,11 @@
 
                 postCreate: function() {
                 	var self = this;
-                    this.store.getAll().then(function(result){
-                    	self.sensors.innerHTML =  JSON.stringify(result.sensors);
-                    	self.types.innerHTML = JSON.stringify(result.types);
-                    	self.groups.innerHTML = JSON.stringify(result.groups);
+                    this.store.getAll\().then(function(result){
+                    	self.keys.innerHTML =  JSON.stringify(result.keys);
+                    	//self.sensors.innerHTML = JSON.stringify(result.sensors);
+                    	//self.types.innerHTML = JSON.stringify(result.types);
+                    	//self.groups.innerHTML = JSON.stringify(result.groups);
                     });
                 },
                 
